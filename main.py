@@ -1,4 +1,5 @@
 from Crypto.Hash import SHA256
+import bcrypt
 
 
 def main():
@@ -22,15 +23,29 @@ def main():
 
 
     elif choice == 3:
-        print("Enter Text to Hash:")
-        hash_object = SHA256.new(data=b'')
-        hashtext = str(input())
-        hash_object.update(hashtext.encode())
-        hashBinaryRaw = hash_object.digest()
-        print("Hash length (SHA-256):", len(hashBinaryRaw)*8)
-        print("binary:", hashBinaryRaw)
-        hashHexaString = hash_object.hexdigest()
-        print("string:", hashHexaString)
+        hashtype = 0
+        print("Choose hash algorithm:")
+        print("1) Blowfish")
+        print("2) SHA-256")
+        hashtype = int(input())
+
+        if hashtype == 1:
+            password = input("Enter Text to Hash:")
+            bytes = password.encode("utf-8")
+            hashed = bcrypt.hashpw(bytes, bcrypt.gensalt())
+            print("string:", hashed)
+
+        if hashtype == 2:
+            print("Enter Text to Hash:")
+            hash_object = SHA256.new(data=b'')
+            hashtext = str(input())
+            hash_object.update(hashtext.encode())
+            hashBinaryRaw = hash_object.digest()
+            print("Hash length (SHA-256):", len(hashBinaryRaw)*8)
+            print("binary:", hashBinaryRaw)
+            hashHexaString = hash_object.hexdigest()
+            print("string:", hashHexaString)
+        
 
 
     elif choice == 4:
