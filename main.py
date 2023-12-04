@@ -21,7 +21,7 @@ def main():
     elif choice == 2:
         print("todo")
 
-
+    #hash
     elif choice == 3:
         hashtype = 0
         print("Choose hash algorithm:")
@@ -29,12 +29,14 @@ def main():
         print("2) SHA-256")
         hashtype = int(input())
 
+        #blowfish hash
         if hashtype == 1:
             password = input("Enter Text to Hash:")
             bytes = password.encode("utf-8")
             hashed = bcrypt.hashpw(bytes, bcrypt.gensalt())
             print("string:", hashed)
 
+        #SHA256 hash
         if hashtype == 2:
             print("Enter Text to Hash:")
             hash_object = SHA256.new(data=b'')
