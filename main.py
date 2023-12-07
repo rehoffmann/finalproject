@@ -67,6 +67,7 @@ def main():
 
 
 def printing():
+    print("")
     print("Going back to main menu...")
     print("")
 
